@@ -23,8 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: A compléter
-        run: |
-          echo "Écrire ici les étapes de test de l'application"
+        run: |pip install -r requirements.txt  (+ pytest)
+        pytest -v tests/
+          
 
   # ---------------------------------------------------------------
   # JOB 2 - Livraison continue : construire l'image Docker
@@ -46,7 +47,8 @@ jobs:
     steps:
       - name: A compléter
         run: |
-          echo "Écrire ici la construction de l'image Docker"
+         docker build -t atelier-flask:latest .
+         docker save -o image.tar atelier-flask:latest
 
   # ---------------------------------------------------------------
   # JOB 3 - Déploiement continu : simulation de mise en production
